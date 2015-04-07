@@ -1,7 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"
-    import="edu.neu.lovesports.entity.*, edu.neu.lovesports.dao.*, java.util.*"%>
+    import="edu.neu.lovesports.entity.*, edu.neu.lovesports.dao.*, java.util.*, java.util.regex.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,10 +33,24 @@ After successfully sign up, jump to Profile(HomePage?)
         
         if("create".equals(action))
         {
+        	Pattern pattern = Pattern.compile("\\W+");   
+            Matcher matcher = pattern.matcher(username);
         	if (username == "")
         	{
         		%>
     			<p style="color:red">Please enter username!</p>
+    			<%
+        	}
+        	else if (matcher.matches())
+        	{
+        		%>
+    			<p style="color:red">Username should be combination of numbers and letters!</p>
+    			<%
+        	}
+        	else if (username.length() < 6)
+        	{
+        		%>
+    			<p style="color:red">Username should be more than 6 characters!</p>
     			<%
         	}
         	else if (dao.readUserByUsername(username) != null)
