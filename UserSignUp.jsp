@@ -61,7 +61,9 @@ After successfully sign up, jump to Profile(HomePage?)
         	{
 	        	User user = new User(username, password, null, null, email);
 	        	dao.createUser(user);
-	        	
+	        	%>
+	        		<p style="color:green">SignUp successfully!</p>
+	        	<%
 	        	/*----------------------------*/
 	        	/*此处硬跳转到Profile（Homepage）页面*/
 	        	/*----------------------------*/
@@ -78,12 +80,12 @@ After successfully sign up, jump to Profile(HomePage?)
 		</tr>
 		<tr>
 			<td>Password</td>
-			<td><input name="password" class="form-control"/></td>
+			<td><input type="password" name="password" class="form-control"/></td>
 			<td>*</td>
 		</tr>
 		<tr>
 			<td>Re-enter password</td>
-			<td><input name="repassword" class="form-control"/></td>
+			<td><input type="password" name="repassword" class="form-control"/></td>
 			<td>*</td>
 		</tr>
 		<tr>
