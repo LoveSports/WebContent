@@ -64,9 +64,8 @@ After successfully sign up, jump to Profile(HomePage?)
 	        	%>
 	        		<p style="color:green">SignUp successfully!</p>
 	        	<%
-	        	/*----------------------------*/
-	        	/*此处硬跳转到Profile（Homepage）页面*/
-	        	/*----------------------------*/
+	        	String redirect = "/LoveSports/UserProfile.jsp?username="+username;
+	        	response.sendRedirect(redirect);
         	}
         }
     %>
